@@ -19,7 +19,7 @@ How to run the example
 Download `grok_exporter-$ARCH.zip` for your operating system from the [releases] page, extract the archive, `cd grok_exporter-$ARCH`, then run
 
 ```bash
-./grok_exporter -config ./example/config.yml
+./grok_exporter -config ./example/config-file.yml
 ```
 
 The example log file `exim-rejected-RCPT-examples.log` contains log messages from the [Exim] mail server. The configuration in `config.yml` counts the total number of rejected recipients, partitioned by error message.
