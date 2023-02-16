@@ -1,0 +1,22 @@
+global:
+  config_version: 3
+input:
+  type: file
+  path: /home/duc/Python/Prometheus/app.log
+  readall: true # Read from the beginning of the file? False means we start at the end of the file and read only new lines.
+imports:
+- type: grok_patterns
+  dir: ./logstash-patterns-core/patterns
+# grok_patterns:
+# - 'EXIM_MESSAGE [a-zA-Z ]*'
+metrics:
+- type: counter
+  name: FPS_total
+  help: Total FPS.
+  match: '%{TIMESTAMP_ISO8601} - %{LOGLEVEL:log_level} - %{NUMBER:value:float}'
+ # value: '{{.value}}'
+
+server:
+  protocol: http
+  host: 127.0.0.1
+  port: 9144
